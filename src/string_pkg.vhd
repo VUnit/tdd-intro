@@ -5,16 +5,17 @@ end package;
 package body string_pkg is
   function to_string (data : integer_vector) return string is
     function list(data : integer_vector) return string is
+      constant data_i : integer_vector(1 to data'length) := data;
     begin
-      if data'length = 0 then
+      if data_i'length = 0 then
         return "";
-      elsif data'length = 1 then
-        return to_string(data(data'left));
+      elsif data_i'length = 1 then
+        return to_string(data_i(1));
       else
-        return to_string(data(data'left)) & ", " & list(data(data'left + 1 to data'right));
+        return to_string(data_i(1)) & ", " & list(data_i(2 to data_i'length));
       end if;
     end;
    begin
      return "(" & list(data) & ")";
-   end function;
+  end function;
 end package body;
