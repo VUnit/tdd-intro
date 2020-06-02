@@ -11,6 +11,7 @@ architecture tb of tb_example is
 begin
   main : process
     variable null_vector : integer_vector(1 to 0);
+    constant reverse_vector : integer_vector(1 downto 0) := (0, 100);
   begin
     test_runner_setup(runner, runner_cfg);
 
@@ -21,6 +22,8 @@ begin
         check_equal(to_string(integer_vector'(0 => 17)), "(17)");
       elsif run("Test vector with many elements") then
         check_equal(to_string(integer_vector'(0 => 17, 1 => -21)), "(17, -21)");
+     elsif run("Test vector with reverse range") then
+        check_equal(to_string(reverse_vector), "(0, 100)");
       end if;
     end loop;
 
