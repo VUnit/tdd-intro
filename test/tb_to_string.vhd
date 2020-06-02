@@ -19,6 +19,8 @@ begin
         check_equal(to_string(null_vector), "()");
       elsif run("Test vector with single element") then
         check_equal(to_string(integer_vector'(0 => 17)), "(17)");
+      elsif run("Test vector with many elements") then
+        check_equal(to_string(integer_vector'(0 => 17, 1 => -21)), "(17, -21)");
       end if;
     end loop;
 
