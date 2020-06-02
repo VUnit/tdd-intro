@@ -5,7 +5,7 @@ end package;
 package body string_pkg is
   function to_string (data : integer_vector) return string is
     function list(data : integer_vector) return string is
-      constant data_i : integer_vector(1 to data'length) := data;
+      alias data_i : integer_vector(1 to data'length) is data;
     begin
       if data_i'length = 0 then
         return "";
