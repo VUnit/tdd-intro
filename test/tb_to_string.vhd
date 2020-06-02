@@ -17,6 +17,8 @@ begin
     while test_suite loop
       if run("Test empty integer_vector") then
         check_equal(to_string(null_vector), "()");
+      elsif run("Test vector with single element") then
+        check_equal(to_string(integer_vector'(0 => 17)), "(17)");
       end if;
     end loop;
 
