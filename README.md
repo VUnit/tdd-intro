@@ -13,6 +13,6 @@ This example repository serves two purposes:
 1. To give an introduction to CI for (V)HDL designs
 2. To give an introduction to TDD
 
-To learn about CI we recommend starting with this [blog post](http://vunit.github.io/blog/2020-08-12_continuous_integration_with_vunit_action_in_10_lines_of_code.html) and then continue with the [documentation](http://vunit.github.io/ci/intro.html).
+To learn about CI we recommend starting with this [blog post](http://vunit.github.io/blog/2020_08_12_continuous_integration_with_vunit_action_in_10_lines_of_code.html) and then continue with the [documentation](http://vunit.github.io/ci/intro.html).
 
 More information about TDD is yet to be published. Keep an eye on updates to this page and our [blog](http://vunit.github.io/blog/index.html),
