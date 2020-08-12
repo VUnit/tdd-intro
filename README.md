@@ -6,16 +6,13 @@
   <a title="'test' workflow status" href="https://github.com/VUnit/tdd-intro/actions?query=workflow%3Atest"><img alt="'test' workflow status" src="https://img.shields.io/github/workflow/status/VUnit/tdd-intro/test?longCache=true&style=flat-square&label=test&logo=github"></a>
 </p>
 
-# Introduction to test-driven development (TDD) for HDL designs
+# Introduction to Test-Driven Development (TDD) and Continuous Integration (CI) With VUnit
 
-## Plain `run.py`
+This example repository serves two purposes:
 
-*TBW*
+1. To give an introduction to CI for (V)HDL designs
+2. To give an introduction to TDD
 
-## Handling multiple `run.py` scripts with [pytest](https://pytest.org)
+To learn about CI we recommend starting with this [blog post](http://vunit.github.io/blog/2020-08-12_continuous_integration_with_vunit_action_in_10_lines_of_code.html) and then continue with the [documentation](http://vunit.github.io/ci/intro.html).
 
-Ref [VUnit/vunit#663](https://github.com/VUnit/vunit/issues/663).
-
-## Continuous Integration
-
-Workflow [test.yml](.github/workflows/tests.yml) is a showcase of procedures to setup continuous integration using [GHDL](https://github.com/ghdl/ghdl) and [VUnit](https://github.com/VUnit/vunit) as a regression framework. See [vunit.github.io/vunit/ci: Introduction to TDD](https://eine.github.io/vunit/ci.html#introduction-to-tdd) for further info.
+More information about TDD is yet to be published. Keep an eye on updates to this page and our [blog](http://vunit.github.io/blog/index.html),
