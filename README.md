@@ -3,7 +3,7 @@
   -->
   <a title="Join the chat at https://gitter.im/VUnit/vunit" href="https://gitter.im/VUnit/vunit"><img src="https://img.shields.io/badge/chat-on%20gitter-4db797.svg?longCache=true&style=flat-square&logo=gitter&logoColor=e8ecef"></a><!--
   -->
-  <a title="'test' workflow status" href="https://github.com/VUnit/tdd-intro/actions?query=workflow%3Atest"><img alt="'test' workflow status" src="https://img.shields.io/github/workflow/status/VUnit/tdd-intro/test?longCache=true&style=flat-square&label=test&logo=github"></a>
+  <a title="'Tests' workflow status" href="https://github.com/VUnit/tdd-intro/actions?query=workflow%3ATests"><img alt="'Tests' workflow status" src="https://img.shields.io/github/workflow/status/VUnit/tdd-intro/Tests?longCache=true&style=flat-square&label=Tests&logo=github"></a>
 </p>
 
 # Introduction to Test-Driven Development (TDD) and Continuous Integration (CI) With VUnit
