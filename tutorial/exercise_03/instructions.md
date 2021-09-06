@@ -50,7 +50,7 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
     python run.py -v
     ```
 
-    Note the printed counter width for all tests is the default value.
+    Note that the printed counter width for all tests is the default value.
 
     ``` console
     0 fs - default              -    INFO - This test is running with counter width = 8 bits.
@@ -92,13 +92,13 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 
     The default configuration (width=16) will not be run if a named configuration has been added.
 
-* Run with the list option and note the change in the test case naming
+* Run with the list option and note the change in the test case naming.
 
     ``` console
     python run.py -l
     ```
 
-* Re-run with the verbose flag and note the printed counter width for all tests
+* Re-run with the verbose flag and note the printed counter width for all tests.
 
 * Update the previous section to
 
