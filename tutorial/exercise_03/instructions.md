@@ -4,7 +4,7 @@
 * Learn how to include externally compiled libraries
 * Learn how to run testbenches and test cases with different generics using VUnit configurations.
 
-More information on this topic can be found in [here](http://vunit.github.io/python_interface.html#configurations).
+More information on this topic can be found in [here](http://vunit.github.io/py/ui.html#configurations).
 
 ## Instructions
 
@@ -36,7 +36,7 @@ More information on this topic can be found in [here](http://vunit.github.io/pyt
     set VUNIT_SIMULATOR=<simulator>
 	```
 
-* Open `exercise_03/run.py` and notice how the `lib` library is added
+* Open `exercise_03/run.py` and notice how the [external library](http://vunit.github.io/py/vunit.html#vunit.ui.VUnit.add_external_library) `lib` is added
 
   ``` python
   lib = prj.add_external_library("lib", join(root, "..", "exercise_01", "vunit_out", "<your simulator>", "libraries", "lib"))
@@ -44,13 +44,13 @@ More information on this topic can be found in [here](http://vunit.github.io/pyt
 
   Sometimes it's useful to add libraries that have been compiled external to VUnit, for example vendor libraries and third-party IPs. In this case we're just taking what's already compiled in exercise 01.
 
-* Run all tests with the verbose flag
+* Run all tests with the verbose flag (make sure that you have run exercise01 first, so lib library from exercise01 is compiled)
 
     ``` console
     python run.py -v
     ```
 
-    Note the printed counter width which is the default value.
+    Note that the printed counter width for all tests is the default value.
 
     ``` console
     0 fs - default              -    INFO - This test is running with counter width = 8 bits.
@@ -65,7 +65,7 @@ More information on this topic can be found in [here](http://vunit.github.io/pyt
     #prj.set_generic("width", 16);
     ```
 
-    This will override the generic value used for the default configuration. Re-run and note the printed counter width
+    This will override the generic value used for the default configuration. Re-run with the verbose flag and note the printed counter width for all tests
 
 * Update the previous section to
 
@@ -92,13 +92,13 @@ More information on this topic can be found in [here](http://vunit.github.io/pyt
 
     The default configuration (width=16) will not be run if a named configuration has been added.
 
-* Run with the list option and note the test case naming
+* Run with the list option and note the change in the test case naming.
 
     ``` console
     python run.py -l
     ```
 
-* Re-run with the verbose flag and note the printed counter width
+* Re-run with the verbose flag and note the printed counter width for all tests.
 
 * Update the previous section to
 
@@ -120,7 +120,9 @@ More information on this topic can be found in [here](http://vunit.github.io/pyt
         test_counting.add_config(name="width=%s" % value, generics=dict(width=value))
     ```
 
-* Run with the list option and note the test case naming. Run with the verbose option and note the printed counter width
+* Run with the list option and note the test case naming.
+
+* Run the __Test counting__ with the verbose option and note the printed counter width and number of running tests
 
 * What generics will be used if you comment out the configuration for the tb_counter_with_test_cases testbench?
 

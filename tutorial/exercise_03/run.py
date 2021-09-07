@@ -9,6 +9,7 @@ prj = VUnit.from_argv()
 root = dirname(__file__)
 
 # Add VHDL libraries to project
+# add_external_library(library_name, path: Union[str, pathlib.Path], vhdl_standard: Optional[str] = None)
 lib = prj.add_external_library("lib", join(root, "..", "exercise_01", "vunit_out", "modelsim", "libraries", "lib"))
 tb_lib = prj.add_library("tb_lib")
 
