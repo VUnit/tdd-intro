@@ -1,18 +1,18 @@
 # Import Python modules
 from vunit import VUnit
-from os.path import join, dirname
+from pathlib import Path
 
 # Setup Python test runner project from command line arguments
-prj = VUnit.from_argv()
+PRJ = VUnit.from_argv()
 
 # Set the root to the directory of this script file
-root = dirname(__file__)
+ROOT = Path(__file__).resolve().parent
 
-# Add VHDL libraries to project
-lib = prj.add_library("lib")
+# Create and add VHDL Libraries to project
+LIB = PRJ.add_library("lib")
 
-# Add all VHDL files to libraries
-lib.add_source_files(join(root, "src", "*.vhd"))
+# Add all VHDL files to Libraries
+LIB.add_source_files(ROOT / "src" / "*.vhd")
 
 # Run VUnit
-prj.main()
+PRJ.main()
