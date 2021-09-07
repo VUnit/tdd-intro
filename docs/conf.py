@@ -2,6 +2,7 @@
 
 import os
 import sys
+from json import loads
 from pathlib import Path
 
 # -- Sphinx Options -----------------------------------------------------------
@@ -50,13 +51,11 @@ html_theme_options = {
     "style_nav_header_background": "#0c479d",
     "home_breadcrumbs": False,
 }
-html_context = {
-    "conf_py_path": "%s/" % Path(__file__).parent.name,
-    "display_github": True,
-    "github_user": "VUnit",
-    "github_repo": "vunit",
-    "github_version": "master/",
-}
+
+ctx = Path(__file__).resolve().parent / 'context.json'
+if ctx.is_file():
+    html_context.update(loads(ctx.open('r').read()))
+
 
 html_static_path = ["_static"]
 
