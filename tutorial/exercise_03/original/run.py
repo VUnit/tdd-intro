@@ -1,25 +1,30 @@
 # Import Python modules
+from pathlib import Path
 from vunit import VUnit
-from os.path import join, dirname
 
 # Setup Python test runner project from command line arguments
-prj = VUnit.from_argv()
+PRJ = VUnit.from_argv()
 
 # Set the root to the directory of this script file
-root = dirname(__file__)
+ROOT = Path(__file__).resolve().parent
 
-# Add VHDL libraries to project
-lib = prj.add_external_library("lib", join(root, "..", "exercise_01", "vunit_out", "modelsim", "libraries", "lib"))
-tb_lib = prj.add_library("tb_lib")
+# Add external VHDL libraries to project
+for simulator in ["modelsim", "ghdl", "rivierapro", "activehdl"]:
+    if simulator_is(simulator):
+        PRJ.add_external_library("lib", ROOT.parent.parent / "exercise_01/solution/vunit_out" / simulator / "libraries/lib")
+        break
 
-# Add all VHDL files to libraries
-tb_lib.add_source_files(join(root, "test", "*.vhd"))
+# Create and add a regular library and add all VHDL files to it
+TB_LIB = PRJ.add_library("tb_lib")
+TB_LIB.add_source_files(ROOT / "test" / "*.vhd")
+# or PRJ.add_library("tb_lib").add_source_files(join(root, "test", "*.vhd"))
 
 # Set simulator specific compile options
-prj.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
+if simulator_is("rivierapro"):
+    PRJ.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
 
 # Set generic for all testbenches and test cases
-#prj.set_generic("width", 16);
+#PRJ.set_generic("width", 16);
 
 # Run VUnit
-prj.main()
+PRJ.main()
