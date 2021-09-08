@@ -1,4 +1,5 @@
 import unittest
+import sys
 from sys import executable
 from os import environ
 from pathlib import Path
@@ -15,6 +16,14 @@ class TestExternalRunScripts(unittest.TestCase):
     """
     Test that installation works
     """
+
+    def setUp(self):
+        print("\n::group::Log")
+        sys.stdout.flush()
+
+    def tearDown(self):
+        print("\n::endgroup::")
+        sys.stdout.flush()
 
     def test_exercise_01(self):
         self.check("exercise_01")
