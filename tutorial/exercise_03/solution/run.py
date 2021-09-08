@@ -14,7 +14,7 @@ for simulator in ["modelsim", "ghdl", "rivierapro", "activehdl"]:
     if simulator_is(simulator):
         PRJ.add_external_library("lib", ROOT.parent.parent / "exercise_01" / "vunit_out" / "modelsim" / "libraries" / "lib")
         break
-        
+
 # Create and add a regular library and add all VHDL files to it
 TB_LIB = PRJ.add_library("tb_lib")
 TB_LIB.add_source_files(ROOT/ "test"/ "*.vhd")
@@ -23,7 +23,7 @@ TB_LIB.add_source_files(ROOT/ "test"/ "*.vhd")
 PRJ.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
 
 # Set generic for all testbenches and test cases
-PRJ.set_generic("width", 16);
+PRJ.set_generic("width", 16)
 
 # Get the tb_counter_with_test_cases testbench (= entity) from the tb_lib library in which it has been compiled
 tb_counter_with_test_cases = TB_LIB.entity("tb_counter_with_test_cases")
