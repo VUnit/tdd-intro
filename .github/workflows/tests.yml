@@ -7,15 +7,15 @@ on:
 jobs:
 
 
-# GNU/Linux: VUnit Action (uses Docker image ghdl/vunit:llvm)
+# GNU/Linux: VUnit Action (uses Docker image ghdl/vunit:mcode)
 
   lin-vunit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: VUnit/vunit_action@v0.1.0
+      - uses: VUnit/vunit_action@master
         with:
-          run_file: tdd/run.py
+          cmd: tdd/run.py
 
 
 # GNU/Linux: Custom Docker image
