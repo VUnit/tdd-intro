@@ -27,7 +27,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: docker build -t vunit/tdd - < .github/Dockerfile
-    - run: docker run --rm -v $(pwd):/src -w /src -e CI vunit/tdd python3 -m pytest -v -s -ra tdd/test_tdd.py --color=yes
+    - run: >-
+        docker run --rm
+        -v $(pwd):/src
+        -w /src
+        -e CI
+        vunit/tdd
+        python3 -m pytest -v -s -ra tdd/test_tdd.py tutorial/test_tutorial.py --color=yes
 
 
 # GNU/Linux: GHDL Action + custom Python packages
@@ -44,7 +50,7 @@ jobs:
         python-version: 3.8
     - run: |
         python -m pip install --progress-bar off pytest vunit_hdl
-        python -m pytest -v -s -ra tdd/test_tdd.py --color=yes
+        python -m pytest -v -s -ra tdd/test_tdd.py tutorial/test_tutorial.py --color=yes
 
 
 # Windows: MSYS2 Action + GHDL Action + custom Python packages
@@ -66,7 +72,7 @@ jobs:
         backend: llvm
     - run: |
         python -m pip install --progress-bar off pytest vunit_hdl
-        python -m pytest -v -s -ra tdd/test_tdd.py --color=yes
+        python -m pytest -v -s -ra tdd/test_tdd.py tutorial/test_tutorial.py --color=yes
 
 
 # Windows: standalone GHDL zipfile/tarball + custom Python packages
@@ -87,5 +93,6 @@ jobs:
         mv ../ghdl-tmp/GHDL/${WINDOWS_RELEASE}/ ../ghdl
         rm -rf ../ghdl-tmp ghdl.zip
         export PATH=$PATH:$(pwd)/../ghdl/bin
+
         python -m pip install --progress-bar off pytest vunit_hdl
-        python -m pytest -v -s -ra tdd/test_tdd.py --color=yes
+        python -m pytest -v -s -ra tdd/test_tdd.py tutorial/test_tutorial.py --color=yes
