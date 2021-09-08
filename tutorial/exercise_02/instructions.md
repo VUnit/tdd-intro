@@ -12,9 +12,10 @@ More information on this topic can be found in our [user guide](http://vunit.git
 
 ## Instructions
 
-* Open `exercise_02/test/tb_counter.vhd` in your text editor. Get acquainted with the tests being performed.
+* Create a copy of `exercise_02/original` named `exercise_02/workspace`.
+* Open `exercise_02/workspace/test/tb_counter.vhd` in your text editor. Get acquainted with the tests being performed.
 * If you have **more than one** simulator on your path you need to select one of them. `<simulator>` = `ghdl`, `modelsim`, `rivierapro`, `activehdl` or `incisive`.
-    
+
 	``` console
     set VUNIT_SIMULATOR=<simulator>
     ```

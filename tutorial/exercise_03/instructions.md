@@ -8,7 +8,8 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 
 ## Instructions
 
-* Open `exercise_03/test/tb_counter.vhd` and/or `exercise_03/test/tb_counter_with_test_cases.vhd`. Note that these testbenches has a `width` generic with a default value of 8.
+* Create a copy of `exercise_03/original` named `exercise_03/workspace`.
+* Open `exercise_03/workspace/test/tb_counter.vhd` and/or `exercise_03/workspace/test/tb_counter_with_test_cases.vhd`. Note that these testbenches has a `width` generic with a default value of 8.
 
     ``` vhdl
       generic(
@@ -36,7 +37,7 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
     set VUNIT_SIMULATOR=<simulator>
 	```
 
-* Open `exercise_03/run.py` and notice how the [external library](http://vunit.github.io/py/vunit.html#vunit.ui.VUnit.add_external_library) `lib` is added
+* Open `exercise_03/workspace/run.py` and notice how the [external library](http://vunit.github.io/py/vunit.html#vunit.ui.VUnit.add_external_library) `lib` is added
 
   ``` python
   lib = prj.add_external_library("lib", join(root, "..", "exercise_01", "vunit_out", "<your simulator>", "libraries", "lib"))

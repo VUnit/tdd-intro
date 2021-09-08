@@ -10,7 +10,8 @@ More information on this topic can be found in the [configuration documentation]
 
 ## Instructions
 
-* Open `exercise_05/test/tb_file_based_testing.vhd`. This testbench verifies an incrementer component that takes a stream of 16-bit numbers (`input_tdata`) and a data valid signal (`input_tvalid`) and produces an output stream (`output_tdata`) which is the input + 1 along with an `output_tvalid` signal.
+* Create a copy of `exercise_05/original` named `exercise_05/workspace`.
+* Open `exercise_05/workspace/test/tb_file_based_testing.vhd`. This testbench verifies an incrementer component that takes a stream of 16-bit numbers (`input_tdata`) and a data valid signal (`input_tvalid`) and produces an output stream (`output_tdata`) which is the input + 1 along with an `output_tvalid` signal.
 
     The first statement of the first test case reads:
 
@@ -43,7 +44,7 @@ More information on this topic can be found in the [configuration documentation]
     end loop;
     ```
 
-* Open `exercise_05/run.py`. Note that the second test case of `test/tb_file_based_testing.vhd` has a configuration added to it:
+* Open `exercise_05/workspace/run.py`. Note that the second test case of `test/tb_file_based_testing.vhd` has a configuration added to it:
 
     ``` python
     tb_lib.test_bench("tb_file_based_testing").test("Test generating and verifying data in hooks").add_config(
@@ -79,7 +80,7 @@ More information on this topic can be found in the [configuration documentation]
 
 * Run the test cases and note that an output file is listed for every test case. That file is in the `output_path` directory. Browse to that directory and you'll find the CSV files produced by the simulation.
 
-* If you look at the top of `exercise_05/run.py` you'll find the `function_running_before_test_case` and `function_running_after_test_case` functions. The Python code in these functions is beyond the scope of this tutorial but note that
+* If you look at the top of `exercise_05/workspace/run.py` you'll find the `function_running_before_test_case` and `function_running_after_test_case` functions. The Python code in these functions is beyond the scope of this tutorial but note that
     1. They have an `output_path` argument giving them access to that directory
     2. They would normally return `True` but in the case of an error they will return `False` and cause the test case to fail.
     ``` python

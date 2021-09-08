@@ -5,7 +5,8 @@ After this exercise you will be able to use VUnit queues for communication betwe
 
 ## Instructions
 
-* Open `exercise_06/test/tb_queue.vhd`. This testbench verifies the same incrementer component used in exercise 05  but rather than using stimuli from file we apply random stimuli. OSVVM provides a lot of randomization functionality and is included in VUnit for that purpose. 
+* Create a copy of `exercise_06/original` named `exercise_06/workspace`.
+* Open `exercise_06/workspace/test/tb_queue.vhd`. This testbench verifies the same incrementer component used in exercise 05  but rather than using stimuli from file we apply random stimuli. OSVVM provides a lot of randomization functionality and is included in VUnit for that purpose.
 
 * Run the testbench
 
@@ -13,7 +14,7 @@ After this exercise you will be able to use VUnit queues for communication betwe
   python run.py
   ```
 
-  This may fail if your simulator isn't shipped with OSVVM. If so, do the next step. 
+  This may fail if your simulator isn't shipped with OSVVM. If so, do the next step.
 
 * OSVVM and some native VUnit packages are considered add-ons which are not compiled by default. To use such an add-on, it needs to be activated in the `run.py` script. Add the following line to your script and re-run. It will still fail for other reasons but it should compile properly.
 

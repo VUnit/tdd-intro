@@ -11,7 +11,8 @@ More information on this topic can be found in our [logging user guide](http://v
 
 ## Instructions
 
-* Open `exercise_04/test/tb_log_and_check.vhd`. Read the code for one test case at a time and then run the test case with
+* Create a copy of `exercise_04/original` named `exercise_04/workspace`.
+* Open `exercise_04/workspace/test/tb_log_and_check.vhd`. Read the code for one test case at a time and then run the test case with
 
     ``` console
     python run.py *"Test n "* -v

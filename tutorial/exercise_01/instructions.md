@@ -12,7 +12,8 @@ More information on this topic can be found in our [user guide](http://vunit.git
 
 ## Instructions
 
-* Open `exercise_01/run.py` in your text editor. Get acquainted with the content.
+* Create a copy of `exercise_01/original` named `exercise_01/workspace`.
+* Open `exercise_01/workspace/run.py` in your text editor. Get acquainted with the content.
 * If you have **more than one** simulator on your path you need to select one of them. `<simulator>` = `ghdl`, `modelsim`, `rivierapro`, `activehdl` or `incisive`.
     ``` console
     set VUNIT_SIMULATOR=<simulator>

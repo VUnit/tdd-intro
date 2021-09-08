@@ -10,7 +10,8 @@ More information on this topic can be found in the [verification component user 
 
 ## Instructions
 
-* The incrementer presented in exercise 05 and 06 is based on AXI interfaces. AXI stream for input and output data and AXI Lite for a control interface which we didn't use in previous exercises. This exercise will raise the abstraction of previous testbenches by using VUnit bus functional models (BFM) rather than controlling the interfaces at the lowest bit level. Open `exercise_07/test/tb_bfm.vhd`. At the bottom of the testbench you'll find three BFMs:
+* Create a copy of `exercise_07/original` named `exercise_07/workspace`.
+* The incrementer presented in exercise 05 and 06 is based on AXI interfaces. AXI stream for input and output data and AXI Lite for a control interface which we didn't use in previous exercises. This exercise will raise the abstraction of previous testbenches by using VUnit bus functional models (BFM) rather than controlling the interfaces at the lowest bit level. Open `exercise_07/workspace/test/tb_bfm.vhd`. At the bottom of the testbench you'll find three BFMs:
   * `axi_stream_master` which connects to the input AXI stream on the incrementer.
   * `axi_stream_slave` which connects to the output AXI stream on the incrementer.
   * `axi_lite_master` which connects to the incrementer AXI Lite control bus.
