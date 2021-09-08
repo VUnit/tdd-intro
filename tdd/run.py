@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """VUnit run script."""
 
 from pathlib import Path
