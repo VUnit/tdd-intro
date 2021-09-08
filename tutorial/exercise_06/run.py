@@ -16,6 +16,9 @@ TB_LIB = PRJ.add_library("tb_lib")
 COMMON_LIB.add_source_files(ROOT.parent/ "common"/ "src"/ "*.vhd")
 TB_LIB.add_source_files(ROOT/ "test"/ "*.vhd")
 
+# Add-ons
+PRJ.add_osvvm()
+
 # Set simulator specific compile options
 PRJ.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
 
