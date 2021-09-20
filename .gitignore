@@ -1,2 +1,6 @@
 __pycache__/
 vunit_out/
+/docs/_build
+/docs/_theme
+/docs/tutorial
+*.tgz
