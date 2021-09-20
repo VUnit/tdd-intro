@@ -1,3 +1,4 @@
+.. VUnit:TDDIntro:
 
 .. centered:: |shieldTdd|_ |shieldVunit|_ |shieldGitter|_ |shieldTwitter|_
 
@@ -13,9 +14,12 @@
 .. |shieldTwitter| image:: https://img.shields.io/twitter/follow/VUnitFramework.svg?longCache=true&style=flat-square&color=1DA1F2&label=%40VUnitFramework&logo=twitter&logoColor=fff
 .. _shieldTwitter: https://www.twitter.com/VUnitFramework
 
-Introduction to Test-Driven Development and Continuous Integration With VUnit
+Introduction to Test-Driven Development and Continuous Integration with VUnit
 =============================================================================
 
 .. toctree::
    :caption: Tutorial
    :hidden:
+
+   tutorial/ex01.rst
+   tutorial/ex02.rst

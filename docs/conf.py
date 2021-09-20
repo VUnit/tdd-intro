@@ -4,6 +4,19 @@ import os
 import sys
 from json import loads
 from pathlib import Path
+from shutil import copyfile
+
+ROOT = Path(__file__).resolve().parent
+
+TUTORIAL = ROOT / "tutorial"
+
+if not TUTORIAL.exists():
+    TUTORIAL.mkdir(exist_ok=True)
+
+for idx in range(1,8):
+    instructions = ROOT.parent / "tutorial/exercise_0{}/instructions.rst".format(idx)
+    if instructions.exists():
+        copyfile(instructions, TUTORIAL / "ex0{}.rst".format(idx))
 
 # -- Sphinx Options -----------------------------------------------------------
 
