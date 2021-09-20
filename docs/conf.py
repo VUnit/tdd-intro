@@ -13,8 +13,7 @@ needs_sphinx = "3.0"
 extensions = [
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.todo",
-    "sphinxarg.ext",  # Automatic argparse command line argument documentation
+    "sphinx.ext.todo"
 ]
 
 # The suffix(es) of source filenames.
@@ -24,7 +23,7 @@ source_suffix = {
 
 master_doc = "index"
 
-project = u"Introduction to TDD and CI With VUnit"
+project = u"VUnit: Introduction to TDD and CI"
 copyright = u"2014-2021, Lars Asplund"
 author = u"LarsAsplund and contributors"
 
@@ -52,6 +51,7 @@ html_theme_options = {
     "home_breadcrumbs": False,
 }
 
+html_context = {}
 ctx = Path(__file__).resolve().parent / 'context.json'
 if ctx.is_file():
     html_context.update(loads(ctx.open('r').read()))
@@ -79,6 +79,9 @@ intersphinx_mapping = {
 extlinks = {
     "vunit_example": ("https://github.com/VUnit/vunit/tree/master/examples/%s/", ""),
     "vunit_file": ("https://github.com/VUnit/vunit/tree/master/%s/", ""),
-    "vunit_commit": ("https://github.com/vunit/vunit/tree/%s/", "@"),
+    "vunit_commit": ("https://github.com/VUnit/vunit/tree/%s/", "@"),
     "vunit_issue": ("https://github.com/VUnit/vunit/issues/%s/", "#"),
+    "tdd_file": ("https://github.com/VUnit/tdd-intro/tree/master/%s/", ""),
+    "tdd_commit": ("https://github.com/VUnit/tdd-intro/tree/%s/", "@"),
+    "tdd_issue": ("https://github.com/VUnit/tdd-intro/issues/%s/", "#"),
 }
