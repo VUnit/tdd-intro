@@ -11,13 +11,17 @@ end;
 
 architecture test of tb_log_and_check is
   constant verification_component_logger : logger_t := get_logger("verification_component");
+  constant clk_period : time := 10 ns;
+
+  signal clk : std_logic := '0';
+  signal data_bus : std_logic_vector(7 downto 0) := x"00";
 begin
 
   main : process
-    variable license_info                        : log_level_t;
+    variable license_info : log_level_t;
     variable main_logger, foo_logger, bar_logger : logger_t;
-    variable file_handler                        : log_handler_t;
-    constant data                                : std_logic_vector(7 downto 0) := "00010001";
+    variable file_handler : log_handler_t;
+    constant data : std_logic_vector(7 downto 0) := "00010001";
   begin
     test_runner_setup(runner, runner_cfg);
 
@@ -101,22 +105,13 @@ begin
         info(default_logger, "This is also a message to the default logger");
 
         main_logger := get_logger(main'path_name);
-        info(main_logger, "VUnit supports hierarchies of loggers." & LF &
-             "This is useful when you want different parts" & LF &
-             "to have different logging properties." & LF &
-             "A component can for example have a logger generic" & LF &
-             "allowing the user to control its logging behaviour." & LF &
-             "Here I created a hierarchy of two loggers" & LF &
-             "based on the main process path name.");
+        info(main_logger, "VUnit supports hierarchies of loggers." & LF & "This is useful when you want different parts" & LF & "to have different logging properties." & LF & "A component can for example have a logger generic" & LF & "allowing the user to control its logging behaviour." & LF & "Here I created a hierarchy of two loggers" & LF & "based on the main process path name.");
 
         foo_logger := get_logger("tb_log_and_check:foo");
-        info(foo_logger, "You can also create a hierarchy with a colon separated name such as" & LF &
-             "tb_log_and_check:foo. In this case tb_log_and_check already exists so only the foo" & LF &
-             "logger is created as a child of tb_log_and_check");
+        info(foo_logger, "You can also create a hierarchy with a colon separated name such as" & LF & "tb_log_and_check:foo. In this case tb_log_and_check already exists so only the foo" & LF & "logger is created as a child of tb_log_and_check");
 
         bar_logger := get_logger("bar", parent => get_logger("tb_log_and_check"));
-        info(bar_logger, "You can also create a logger and specify its parent. In this case bar is created" & LF &
-             "as a child to tb_log_and_check");
+        info(bar_logger, "You can also create a logger and specify its parent. In this case bar is created" & LF & "as a child to tb_log_and_check");
 
         show(main_logger, display_handler, debug);
         debug(main_logger, "The main logger shows debug messages");
@@ -133,14 +128,14 @@ begin
         show(verification_component_logger, display_handler, (pass, debug));
         wait for 100 ns;
 
-        -- Tip: Open verification_component.vhd to see how a custom checker
-        -- that will report to your custom logger can be created.
+      -- Tip: Open verification_component.vhd to see how a custom checker
+      -- that will report to your custom logger can be created.
 
       elsif run("Test 10 - Adding a file handler") then
         -- tb_path(runner_cfg) returns the directory of this testbench. join
         -- creates a full path by joining that directory name with /log.txt
         file_handler := new_log_handler(file_name => join(tb_path(runner_cfg), "log.txt"),
-                                        format    => csv,
+                                        format => csv,
                                         use_color => false);
         set_log_handlers(default_logger, (display_handler, file_handler));
         show(file_handler, (info, debug));
@@ -152,8 +147,17 @@ begin
         end loop;
 
       elsif run("Test 11 - Location preprocessing") then
-        info("Make sure to uncomment this line in run.py:" & LF &
-             "#prj.enable_location_preprocessing()");
+        info("Unless you run Riviera-PRO with VHDL-2019 there is no information" & LF & "on the location of logs. You can fix that by uncommenting the" & LF & "following line in run.py" & LF & "#PRJ.enable_location_preprocessing()");
+
+      elsif run("Test 12 - Concurrent checks") then
+        info("Most checks can also be run concurrently at every clock edge");
+        -- The check used in this example is check_not_unknown located at the bottom
+        -- of the file.
+        show(check_logger, display_handler, pass);
+        set_stop_level(failure);
+
+        data_bus <= x"42", "10100X11" after 5 * clk_period, x"17" after 6 * clk_period;
+        wait for 10 * clk_period;
 
       end if;
     end loop;
@@ -162,6 +166,17 @@ begin
   end process;
 
   test_runner_watchdog(runner, 1 ms);
+
+  clk <= not clk after clk_period / 2;
+
+  check_not_unknown(
+    clock => clk,
+    -- en is a signal allowing us to control when the check is active.
+    -- If always active you can use the predefined check_enabled signal
+    en => check_enabled,
+    expr => data_bus,
+    msg => result("for data_bus")
+  );
 
   verification_component_1 : entity work.verification_component
     generic map (

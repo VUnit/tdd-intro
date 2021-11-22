@@ -40,7 +40,9 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 * Open `exercise_03/workspace/run.py` and notice how the [external library](http://vunit.github.io/py/vunit.html#vunit.ui.VUnit.add_external_library) `lib` is added
 
   ``` python
-  lib = prj.add_external_library("lib", join(root, "..", "exercise_01", "vunit_out", "<your simulator>", "libraries", "lib"))
+  PRJ.add_external_library(
+            "lib", ROOT.parent.parent / "exercise_01" / "solution" / "vunit_out" / <your simulator> / "libraries" / "lib"
+        ))
   ```
 
   Sometimes it's useful to add libraries that have been compiled external to VUnit, for example vendor libraries and third-party IPs. In this case we're just taking what's already compiled in exercise 01.
@@ -63,7 +65,7 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 
     ``` python
     # Set generic for all testbenches and test cases
-    #prj.set_generic("width", 16);
+    #PRJ.set_generic("width", 16)
     ```
 
     This will override the generic value used for the default configuration. Re-run with the verbose flag and note the printed counter width for all tests
@@ -72,10 +74,10 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 
     ``` python
     # Set generic for all testbenches and test cases
-    prj.set_generic("width", 16);
+    PRJ.set_generic("width", 16)
 
     # Get the tb_counter_with_test_cases testbench from the tb_lib library in which it has been compiled
-    tb_counter_with_test_cases = tb_lib.test_bench("tb_counter_with_test_cases")
+    tb_counter_with_test_cases = TB_LIB.test_bench("tb_counter_with_test_cases")
 
     # Add a named configuration for tb_counter_with_test_cases with the width generic set to 12
     tb_counter_with_test_cases.add_config(name="width=12", generics=dict(width=12))
@@ -105,7 +107,7 @@ More information on this topic can be found in [here](http://vunit.github.io/py/
 
     ``` python
     # Set generic for all testbenches and test cases
-    prj.set_generic("width", 16);
+    PRJ.set_generic("width", 16);
 
     # Get the tb_counter_with_test_cases testbench from the tb_lib library in which it has been compiled
     tb_counter_with_test_cases = tb_lib.test_bench("tb_counter_with_test_cases")

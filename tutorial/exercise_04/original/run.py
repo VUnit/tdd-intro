@@ -1,24 +1,26 @@
+"""Run script for exercise_04."""
+
 # Import Python modules
-from vunit import VUnit
 from pathlib import Path
+from vunit import VUnit
 
 # Setup Python test runner project from command line arguments
-PRJ = VUnit.from_argv()
+prj = VUnit.from_argv()
 
 # Enable location for logs
-#prj.enable_location_preprocessing()
+# prj.enable_location_preprocessing()
 
 # Set the root to the directory of this script file
-ROOT = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent
 
 # Create and add VHDL Libraries to project
-TB_LIB = PRJ.add_library("tb_lib")
+tb_lib = prj.add_library("tb_lib")
 
 # Add all VHDL files to Libraries
-TB_LIB.add_source_files(ROOT / "test" / "*.vhd")
+tb_lib.add_source_files(root / "test" / "*.vhd")
 
 # Set simulator specific compile options
-PRJ.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
+prj.set_compile_option("rivierapro.vcom_flags", ["-dbg"])
 
 # Run VUnit
-PRJ.main()
+prj.main()

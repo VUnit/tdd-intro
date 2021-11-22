@@ -62,6 +62,24 @@ begin
 
         save_csv(dut_response, join(output_path(runner_cfg), "dut_response.csv"));
 
+      elsif run("Test Matlab/Octave co-simulation") then
+        input_data := load_csv(file_name => join(output_path(runner_cfg), "stimuli.csv"),
+                               bit_width => input_tdata'length,
+                               is_signed => false);
+
+        dut_response := new_1d(bit_width => output_tdata'length, is_signed => false);
+
+        input_tvalid <= '1';
+        for i in 0 to length(input_data) - 1 loop
+          input_tdata <= to_slv(get(input_data, i), input_tdata);
+          wait until falling_edge(clk);
+          if output_tvalid then
+            append(dut_response, to_integer(output_tdata));
+          end if;
+        end loop;
+
+        save_csv(dut_response, join(output_path(runner_cfg), "dut_response.csv"));
+
       end if;
     end loop;
 

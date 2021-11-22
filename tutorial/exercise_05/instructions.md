@@ -3,8 +3,9 @@
 
 * Learn how to use VUnit integer arrays for file-based testing
 * Learn how to add pre and post simulation hooks
+* Learn how to co-simulate with Matlab/Octave
 
-After this exercise you will be able to use VUnit for file-based verification. You will also know the basics for integrating your simulation with external tools such as Matlab.
+After this exercise you will be able to use VUnit for file-based verification. You will also know the basics for integrating your simulation with external tools such as Matlab/Octave.
 
 More information on this topic can be found in the [configuration documentation](http://vunit.github.io/py/ui.html#configurations) and in this [LinkedIn article](https://www.linkedin.com/pulse/vunit-matlab-integration-lars-asplund).
 
@@ -78,7 +79,7 @@ More information on this topic can be found in the [configuration documentation]
 
   Note the last line. In this case we're saving the file to the `output_path` directory rather than `tb_path`. `output_path` is a directory created by VUnit that is unique to your test case. This means that several test cases can generate files with the same name without overwriting each other.
 
-* Run the test cases and note that an output file is listed for every test case. That file is in the `output_path` directory. Browse to that directory and you'll find the CSV files produced by the simulation.
+* Run the test cases and note that an output file is listed for every test case (the third test case is failing because we haven't fixed it yet). That file is located in the `output_path` directory. Browse to that directory and you'll find the CSV files produced by the simulation.
 
 * If you look at the top of `exercise_05/workspace/run.py` you'll find the `function_running_before_test_case` and `function_running_after_test_case` functions. The Python code in these functions is beyond the scope of this tutorial but note that
     1. They have an `output_path` argument giving them access to that directory
@@ -96,3 +97,5 @@ More information on this topic can be found in the [configuration documentation]
     ```
 
     in the VHDL code above and give it a try!
+
+* The third test case, `Test Matlab/Octave co-simulation`, has hooks calling Matlab/Octave to do the generation of input data and verify the output data. This is done using two M-scripts located in `exercise_05/workspace/octave`. Complete these M-scripts and the `run.py`.

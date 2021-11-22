@@ -1,6 +1,8 @@
+"""Run script for exercise_02."""
+
 # Import Python modules
-from vunit import VUnit
 from pathlib import Path
+from vunit import VUnit
 
 # Setup Python test runner project from command line arguments
 PRJ = VUnit.from_argv()

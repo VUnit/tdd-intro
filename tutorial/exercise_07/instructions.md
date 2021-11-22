@@ -131,13 +131,13 @@ More information on this topic can be found in the [verification component user 
   Once the BFM has a new data it will reply back to the `pop_stream` procedure in `check_output`
 
   ``` console
-  [12:11 AXI Stream Slave -> - (-)] => AXI Stream Slave outbox
+  [12:11 AXI Stream Slave -> - (axi stream transaction)] => AXI Stream Slave outbox
   ```
 
   Message 12 is a reply to message 11 (12:11) but since message 11 was from an anonymous sender (we haven't created an actor for `check_output`) the AXI stream slave will place the message in its own outbox from which the `pop_stream` procedure will read the reply.
 
   ``` console
-  AXI Stream Slave outbox => [12:11 AXI Stream Slave -> - (-)]
+  AXI Stream Slave outbox => [12:11 AXI Stream Slave -> - (axi stream transaction)]
   ```
 
   There is no privacy in message passing!

@@ -5,10 +5,11 @@ from os import environ
 from pathlib import Path
 from subprocess import call
 from tests.common import check_report
+from vunit import VUnit
 from vunit.sim_if.common import has_simulator
 
 
-ROOT = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent
 
 
 @unittest.skipUnless(has_simulator(), "Requires simulator")
@@ -50,6 +51,7 @@ class TestExternalRunScripts(unittest.TestCase):
                 ),
                 ("passed", "tb_lib.tb_log_and_check.Test 10 - Adding a file handler"),
                 ("passed", "tb_lib.tb_log_and_check.Test 11 - Location preprocessing"),
+                ("failed", "tb_lib.tb_log_and_check.Test 12 - Concurrent checks"),
                 (
                     "failed",
                     "tb_lib.tb_log_and_check.Test 1 - Basic logging on the display",
@@ -74,7 +76,7 @@ class TestExternalRunScripts(unittest.TestCase):
         """
         new_env = environ.copy()
         new_env["VUNIT_VHDL_STANDARD"] = vhdl_standard
-        run_file = ROOT / exercise / "solution/run.py"
+        run_file = root / exercise / "solution/run.py"
         self.output_path = run_file.parent / "vunit_out"
         self.report_file = self.output_path / "xunit.xml"
         self.assertEqual(
